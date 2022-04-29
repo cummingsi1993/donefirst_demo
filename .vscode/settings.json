@@ -1,0 +1,16 @@
+{
+  "typescript.suggest.autoImports": false,
+  "typescript.validate.enable": true,
+
+  "javascript.validate.enable": true,
+
+  "eslint.enable": false, // slows the IDE response times, we only want eslint as a commmand line step.
+
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum'",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

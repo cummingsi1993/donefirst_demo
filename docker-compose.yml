@@ -1,0 +1,23 @@
+services:
+  couchbase:
+    image: couchbase
+    ports:
+      - "8091-8094:8091-8094"
+      - "11210:11210"
+    volumes:
+      - "./app-configuration/couchbase:/opt/couchbase/var"
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "5200:80"
+    volumes:
+      - "./app-configuration/client:/var/www/html/config"
+      - "./app-configuration/nginx:/etc/nginx/conf.d"
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "5201:80"

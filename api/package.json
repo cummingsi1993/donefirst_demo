@@ -1,0 +1,32 @@
+{
+  "name": "booking-api",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "express": "4.18.0",
+    "cors": "2.8.5",
+    "couchbase": "3.2.0"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.7",
+    "@types/node": "15.12.5",
+    "@types/express": "4.17.12",
+    "@types/cors": "2.8.12",
+    "typescript": "4.3.4",
+    "ts-node": "10.0.0"
+  },
+  "scripts": {
+    "build": "tsc -b tsconfig.json"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
+  }
+}
