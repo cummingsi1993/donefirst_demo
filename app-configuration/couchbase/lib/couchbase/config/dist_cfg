@@ -1,4 +1,0 @@
-[{external_listeners,[inet_tcp_dist]},
- {local_listeners,[inet_tcp_dist]},
- {preferred_external_proto,inet_tcp_dist},
- {preferred_local_proto,inet_tcp_dist}].

@@ -107,15 +107,12 @@
           "DcpStream",
           "Delete",
           "Insert",
-          "MetaRead",
           "MetaWrite",
           "Read",
           "SimpleStats",
           "SystemXattrRead",
           "SystemXattrWrite",
-          "Upsert",
-          "XattrRead",
-          "XattrWrite"
+          "Upsert"
         ]
       }
     },
@@ -140,32 +137,6 @@
     },
     "privileges": [
       "Stats"
-    ],
-    "domain": "local"
-  },
-  "patient_registration;legacy": {
-    "buckets": {
-      "patient_registration": {
-        "privileges": [
-          "DcpConsumer",
-          "DcpProducer",
-          "DcpStream",
-          "Delete",
-          "Insert",
-          "MetaRead",
-          "MetaWrite",
-          "Read",
-          "SimpleStats",
-          "SystemXattrRead",
-          "SystemXattrWrite",
-          "Upsert",
-          "XattrRead",
-          "XattrWrite"
-        ]
-      }
-    },
-    "privileges": [
-      "SystemSettings"
     ],
     "domain": "local"
   }

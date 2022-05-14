@@ -13,6 +13,9 @@ scrape_configs:
           - '__name__'
         target_label: 'name'
     metrics_path: '/_prometheusMetrics'
+    params:
+      timeout:
+        - '10000'
     relabel_configs:
       - regex: '127\.0\.0\.1:8091'
         replacement: 'ns_server'
@@ -79,6 +82,9 @@ scrape_configs:
           - '__name__'
         target_label: 'name'
     metrics_path: '/_prometheusMetricsHigh'
+    params:
+      timeout:
+        - '10000'
     relabel_configs:
       - regex: '127\.0\.0\.1:8091'
         replacement: 'ns_server'
@@ -99,6 +105,9 @@ scrape_configs:
           - '__name__'
         target_label: 'name'
     metrics_path: '/_prometheusMetricsHigh'
+    params:
+      timeout:
+        - '10000'
     relabel_configs:
       - regex: '127\.0\.0\.1:9102'
         replacement: 'index'
@@ -119,6 +128,9 @@ scrape_configs:
           - '__name__'
         target_label: 'name'
     metrics_path: '/_prometheusMetricsHigh'
+    params:
+      timeout:
+        - '10000'
     relabel_configs:
       - regex: '127\.0\.0\.1:8094'
         replacement: 'fts'
@@ -139,6 +151,9 @@ scrape_configs:
           - '__name__'
         target_label: 'name'
     metrics_path: '/_prometheusMetricsHigh'
+    params:
+      timeout:
+        - '10000'
     relabel_configs:
       - regex: '127\.0\.0\.1:11280'
         replacement: 'kv'
@@ -159,6 +174,9 @@ scrape_configs:
           - '__name__'
         target_label: 'name'
     metrics_path: '/_prometheusMetricsHigh'
+    params:
+      timeout:
+        - '10000'
     relabel_configs:
       - regex: '127\.0\.0\.1:8095'
         replacement: 'cbas'
@@ -179,6 +197,9 @@ scrape_configs:
           - '__name__'
         target_label: 'name'
     metrics_path: '/_prometheusMetricsHigh'
+    params:
+      timeout:
+        - '10000'
     relabel_configs:
       - regex: '127\.0\.0\.1:8096'
         replacement: 'eventing'

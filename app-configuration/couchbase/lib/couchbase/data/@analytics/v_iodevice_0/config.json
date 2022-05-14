@@ -18,12 +18,12 @@
                 "analyticsHttpAdminListenPort": "9110",
                 "analyticsHttpListenAddress": [
                     "127.0.0.1",
-                    "172.18.0.2"
+                    "172.20.0.3"
                 ],
                 "analyticsHttpListenPort": "8095",
                 "analyticsHttpsListenAddress": [
                     "127.0.0.1",
-                    "172.18.0.2"
+                    "172.20.0.3"
                 ],
                 "analyticsHttpsListenPort": "18095",
                 "analyticsNodeName": "127.0.0.1:8091",
@@ -32,7 +32,7 @@
                 "cbasPort": "9122",
                 "ccAddress": "0.0.0.0",
                 "ccAnalyticsHttpListenPort": "9111",
-                "ccAnalyticsMetadataPartitionId": 0,
+                "ccAnalyticsMetadataPartitionId": -1,
                 "ccClientListenPort": "9113",
                 "ccClusterListenPort": "9112",
                 "ccConsoleListenPort": "9114",
@@ -41,7 +41,7 @@
                 "ccHeartbeatPeriod": "30000",
                 "ccPublicAddress": "127.0.0.1",
                 "clusterAddress": "127.0.0.1",
-                "clusterCompatibility": 458752,
+                "clusterCompatibility": 458753,
                 "clusterListenPort": "9115",
                 "clusterPort": "9112",
                 "dataListenPort": "9116",
@@ -56,24 +56,25 @@
                 "messagingListenPort": "9118",
                 "metadataCallbackPort": "9119",
                 "metadataListenPort": "9121",
-                "metadataNode": "11e54352ad910cfa2bbeae56a457cfaf",
+                "metadataNode": "3567dd5ba16a2fe7a234a50e8baddc2e",
                 "ncservicePort": "-1",
                 "nsServerAddress": "127.0.0.1",
                 "nsServerPort": 8091,
                 "nsServerSslPort": 18091,
-                "productVersion": "7.0.3-7032",
+                "numReplicas": 0,
+                "productVersion": "7.1.0-2556",
                 "publicAddress": "127.0.0.1",
                 "replicationEnabled": true,
                 "replicationFactor": 4096,
                 "replicationListenPort": 9120,
                 "replicationLogBufferPagesize": 262144,
-                "replicationStrategy": "metadata",
+                "replicationStrategy": "all",
                 "resultListenPort": "9117",
                 "sslEnabled": false,
                 "startingPartitionId": "0",
                 "txnLogBufferPagesize": 262144
             },
-            "nodeId": "11e54352ad910cfa2bbeae56a457cfaf"
+            "nodeId": "3567dd5ba16a2fe7a234a50e8baddc2e"
         }
     ]
 }

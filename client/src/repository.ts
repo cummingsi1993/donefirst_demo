@@ -1,6 +1,6 @@
 import { PatientRegistrationForm } from "./model";
 
-const rootUrl = "http://localhost:80/api/v1";
+const rootUrl = "http://localhost:5201/api/v1";
 
 export const savePatientRegistration = (patient: PatientRegistrationForm) =>
   fetch(`${rootUrl}/registration`, {
