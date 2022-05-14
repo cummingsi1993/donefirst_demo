@@ -5,7 +5,7 @@ export const getCluster = async () => {
   if (cluster === "not-loaded") {
     console.log("connecting to couchbase for the first time.");
     console.log("loading bucket");
-    cluster = await connect("localhost:11210", {
+    cluster = await connect("couchbase", {
       username: "Administrator",
       password: "Password",
     });

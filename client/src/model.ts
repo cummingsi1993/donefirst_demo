@@ -5,7 +5,7 @@ export type PatientRegistration = {
   phoneNumber: string;
   email: string;
   address: string;
-  licensePhoto: {};
+  licensePhoto: string;
   appointmentTime: Date;
 };
 
@@ -75,8 +75,10 @@ const rules = {
   requiredRule: (value: any) => !!value,
   dateMustBeInFuture: (value: any) => new Date(value) > new Date(),
   dateMustBeInPast: (value: any) => new Date(value) < new Date(),
-  emailAddressRule: (value: any) => true,
-  phoneNumerRule: (value: any) => true,
+  emailAddressRule: (value: any) =>
+    /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value),
+  phoneNumerRule: (value: any) =>
+    /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(value),
 };
 
 const runRules =

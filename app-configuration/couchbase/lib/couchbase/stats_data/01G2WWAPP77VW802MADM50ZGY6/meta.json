@@ -1,0 +1,17 @@
+{
+	"ulid": "01G2WWAPP77VW802MADM50ZGY6",
+	"minTime": 1651492800000,
+	"maxTime": 1651500000000,
+	"stats": {
+		"numSamples": 268762,
+		"numSeries": 1997,
+		"numChunks": 3665
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01G2WWAPP77VW802MADM50ZGY6"
+		]
+	},
+	"version": 1
+}

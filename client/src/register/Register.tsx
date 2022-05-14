@@ -6,12 +6,10 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Input from "@mui/material/Input";
-import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
+import Popover from "@mui/material/Popover";
 import { Typography, TextField } from "@mui/material";
 import { savePatientRegistration } from "../repository";
 
@@ -19,7 +17,6 @@ import {
   PatientRegistrationForm,
   ValidatePatientRegistration,
   ValidationResult,
-  IsPatientRegistration,
 } from "../model";
 
 export const Register: React.FC<{}> = () => {
@@ -30,9 +27,11 @@ export const Register: React.FC<{}> = () => {
     phoneNumber: "",
     email: "",
     address: "",
-    licensePhoto: {},
+    licensePhoto: "",
     appointmentTime: "",
   });
+
+  const [errorPopover, setErrorPopover] = React.useState(false);
 
   const [validations, setValidations] = React.useState<
     ValidationResult<PatientRegistrationForm>
@@ -47,11 +46,38 @@ export const Register: React.FC<{}> = () => {
     };
 
   const submitForm = () => {
-    savePatientRegistration(patient);
+    if (
+      validations.address.valid &&
+      validations.appointmentTime.valid &&
+      validations.dateOfBirth.valid &&
+      validations.email.valid &&
+      validations.firstName.valid &&
+      validations.lastName.valid &&
+      validations.licensePhoto.valid &&
+      validations.phoneNumber.valid
+    )
+      savePatientRegistration(patient);
+    else {
+      setErrorPopover(true);
+    }
   };
 
   return (
     <Container>
+      <Popover
+        open={errorPopover}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        onClose={() => setErrorPopover(false)}
+      >
+        Please fix all validation errors before continuing.
+      </Popover>
       <Paper>
         <Box
           sx={{
@@ -137,6 +163,83 @@ export const Register: React.FC<{}> = () => {
                   ></Input>
                   <FormHelperText>
                     {validations.appointmentTime.message}
+                  </FormHelperText>
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  label="Phone Number"
+                  error={!validations.phoneNumber.valid}
+                  helperText={validations.phoneNumber.message}
+                  value={patient.phoneNumber}
+                  variant="filled"
+                  onChange={answerQuestion("phoneNumber")}
+                ></TextField>
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <FormControl>
+                  <FormLabel>License Photo</FormLabel>
+                  <Input
+                    type="file"
+                    error={!validations.licensePhoto.valid}
+                    onChange={(e) => {
+                      if (
+                        !(e.target instanceof HTMLInputElement) ||
+                        e.target.files === null
+                      )
+                        return;
+
+                      const fail = (valid: { message: string } | "isValid") =>
+                        setValidations(
+                          valid === "isValid"
+                            ? {
+                                ...validations,
+                                licensePhoto: { message: "", valid: true },
+                              }
+                            : {
+                                ...validations,
+                                licensePhoto: {
+                                  message: valid.message,
+                                  valid: false,
+                                },
+                              }
+                        );
+
+                      const { files } = e.target;
+
+                      if (files.length === 0) {
+                        fail({ message: "No file was selected." });
+                        return;
+                      } else if (files.length > 1) {
+                        fail({
+                          message: "Selecting multiple files is not supported.",
+                        });
+                        return;
+                      }
+
+                      const file = files[0];
+                      const reader = new FileReader();
+                      reader.readAsBinaryString(file);
+                      reader.onloadend = (_event) => {
+                        if (
+                          typeof reader.result !== "string" ||
+                          reader.result === null
+                        ) {
+                          fail({ message: "Loading the file failed." });
+                          return;
+                        }
+                        fail("isValid");
+                        setPatient({
+                          ...patient,
+                          licensePhoto: reader.result,
+                        });
+                      };
+                    }}
+                  ></Input>
+                  <FormHelperText>
+                    {validations.licensePhoto.message}
                   </FormHelperText>
                 </FormControl>
               </Grid>

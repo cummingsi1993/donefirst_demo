@@ -10,3 +10,8 @@ export const savePatientRegistration = (patient: PatientRegistrationForm) =>
   });
 
 export const getAllRegistrations = () => fetch(`${rootUrl}/registrations`);
+
+export const licensePhotoUrl = (email: string) =>
+  `${rootUrl}/registration/license/?email=${email}`;
+
+export const getLicensePhoto = (email: string) => fetch(licensePhotoUrl(email));
